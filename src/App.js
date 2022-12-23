@@ -16,7 +16,10 @@ import Home from "./pages/Home";
 import Contact from "./pages/help/Contact";
 import Feq from "./pages/help/Feq";
 import NotFound from "./pages/NotFound";
-import Careers, { careersLoader } from "./pages/Careers";
+import Careers, { careersLoader } from "./pages/careers/Careers";
+import CareerDetails, {
+  careerDetailsLoader,
+} from "./pages/careers/CareerDetails";
 
 function App() {
   const router = createBrowserRouter(
@@ -30,9 +33,14 @@ function App() {
           <Route path="faq" element={<Feq />} /> {/** /help/feq */}
           <Route path="contact" element={<Contact />} /> {/** /help/contact */}
         </Route>
-        {/** loaders */}
+        {/** loaders && Dynamic Roots*/}
         <Route path="career" element={<CareerLayout />}>
           <Route index element={<Careers />} loader={careersLoader} />
+          <Route
+            path=":id"
+            element={<CareerDetails />}
+            loader={careerDetailsLoader}
+          />
         </Route>
         {/**not found page */}
         <Route path="*" element={<NotFound />} />
