@@ -20,6 +20,7 @@ import Careers, { careersLoader } from "./pages/careers/Careers";
 import CareerDetails, {
   careerDetailsLoader,
 } from "./pages/careers/CareerDetails";
+import CareersError from "./pages/careers/CareersError";
 
 function App() {
   const router = createBrowserRouter(
@@ -34,7 +35,11 @@ function App() {
           <Route path="contact" element={<Contact />} /> {/** /help/contact */}
         </Route>
         {/** loaders && Dynamic Roots*/}
-        <Route path="career" element={<CareerLayout />}>
+        <Route
+          path="career"
+          element={<CareerLayout />}
+          errorElement={<CareersError />} //if type uncorrected url pram or api don't work
+        >
           <Route index element={<Careers />} loader={careersLoader} />
           <Route
             path=":id"
