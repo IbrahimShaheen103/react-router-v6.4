@@ -13,7 +13,7 @@ import CareerLayout from "./layouts/CareerLayout";
 //pages
 import About from "./pages/About";
 import Home from "./pages/Home";
-import Contact from "./pages/help/Contact";
+import Contact, { contactAction } from "./pages/help/Contact";
 import Feq from "./pages/help/Feq";
 import NotFound from "./pages/NotFound";
 import Careers, { careersLoader } from "./pages/careers/Careers";
@@ -32,7 +32,8 @@ function App() {
         <Route path="help" element={<HelpLayout />}>
           {/** /help => as a parent  */}
           <Route path="faq" element={<Feq />} /> {/** /help/feq */}
-          <Route path="contact" element={<Contact />} /> {/** /help/contact */}
+          <Route path="contact" element={<Contact />} action={contactAction} />
+          {/** /help/contact */}
         </Route>
         {/** loaders && Dynamic Roots*/}
         <Route
